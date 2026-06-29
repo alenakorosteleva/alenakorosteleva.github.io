@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oskelly Alena Korosteleva</title>
+  <title>Onóre Alena Korosteleva</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -23,31 +23,26 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text); -webkit-font-smoothing: antialiased; }
 
-    /* NAV */
     nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--off-white); position: sticky; top: 0; z-index: 100; }
     .nav-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); text-decoration: none; }
     .nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--text); }
 
-    /* CASE HERO */
     .case-hero { background: var(--mauve); padding: 3.5rem 2.5rem 3rem; position: relative; overflow: hidden; }
     .case-hero::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); top: -200px; right: -100px; pointer-events: none; }
     .case-back { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 6px; }
-    .case-category { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-family: 'Syne', sans-serif; font-weight: 600; }
+    .case-category { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
     .case-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 3.5vw, 48px); font-weight: 700; color: white; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 2rem; max-width: 700px; }
     .case-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
     .meta-item { display: flex; flex-direction: column; gap: 5px; }
-    .meta-label { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); font-family: 'Syne', sans-serif; font-weight: 600; }
+    .meta-label { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
     .meta-value { font-size: 12px; color: rgba(255,255,255,0.65); }
 
-    /* HERO IMAGE */
-    .hero-img-wrap { border-bottom: 1px solid var(--border); overflow: hidden; max-height: 520px; }
-    .hero-img-wrap img { width: 100%; display: block; object-fit: cover; object-position: center; }
+    .hero-img-wrap { border-bottom: 1px solid var(--border); overflow: hidden; max-height: 560px; }
+    .hero-img-wrap img { width: 100%; display: block; object-fit: cover; object-position: center 30%; }
 
-    /* SECTION SHARED */
     .section-tag { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.5rem; }
 
-    /* OVERVIEW */
     .overview { display: grid; grid-template-columns: 300px 1fr; border-bottom: 1px solid var(--border); }
     .overview-left { padding: 2.5rem 2rem; border-right: 1px solid var(--border); }
     .overview-right { padding: 2.5rem 2.5rem; }
@@ -58,7 +53,6 @@
     .overview-headline { font-family: 'Syne', sans-serif; font-size: clamp(18px, 2vw, 26px); font-weight: 700; color: var(--text); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 1.25rem; }
     .overview-body { font-size: 14px; color: var(--text-mid); line-height: 1.85; }
 
-    /* APPROACH */
     .approach { border-bottom: 1px solid var(--border); padding: 2.5rem 2.5rem; }
     .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 1.5rem; }
     .approach-card { background: var(--off-white); padding: 1.75rem 1.5rem; }
@@ -66,15 +60,17 @@
     .approach-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 0.75rem; }
     .approach-body { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
 
-    /* EXECUTION */
     .execution { border-bottom: 1px solid var(--border); }
     .execution-header { padding: 2rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border); }
     .exec-full { width: 100%; display: block; object-fit: cover; border-bottom: 1px solid var(--border); max-height: 500px; }
     .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
     .exec-grid img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; }
+    .exec-grid img.portrait { aspect-ratio: 3/4; object-position: center top; }
     .exec-caption { padding: 1rem 2.5rem; font-size: 12px; color: var(--text-light); font-style: italic; border-bottom: 1px solid var(--border); }
 
-    /* RESULTS */
+    .branding { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+    .branding img { width: 100%; display: block; object-fit: cover; aspect-ratio: 16/9; }
+
     .results { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
     .results-left { background: var(--mauve); padding: 3rem 2.5rem; }
     .results-heading { font-family: 'Syne', sans-serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; color: white; line-height: 1.2; margin-bottom: 2rem; }
@@ -85,7 +81,6 @@
     .takeaway-label { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1rem; }
     .takeaway-text { font-size: 14px; color: var(--text-mid); line-height: 1.85; font-style: italic; }
 
-    /* CASE NAV */
     .case-nav { display: grid; grid-template-columns: 1fr 1fr; }
     .case-nav-item { padding: 1.75rem 2.5rem; cursor: pointer; transition: background 0.15s; text-decoration: none; display: block; }
     .case-nav-item:hover { background: #f3f1f7; }
@@ -93,7 +88,6 @@
     .nav-dir { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.5rem; }
     .nav-case-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
       .case-hero { padding: 2.5rem 1.5rem 2rem; }
@@ -106,6 +100,7 @@
       .execution-header { padding: 1.5rem 1.5rem 1rem; }
       .exec-caption { padding: 1rem 1.5rem; }
       .exec-grid { grid-template-columns: 1fr; }
+      .branding { grid-template-columns: 1fr; }
       .results { grid-template-columns: 1fr; }
       .results-right { border-left: none; border-top: 1px solid var(--border); padding: 2rem 1.5rem; }
       .results-left { padding: 2rem 1.5rem; }
@@ -130,30 +125,34 @@
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8 5H2M2 5L4.5 2.5M2 5L4.5 7.5" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Case study
     </p>
-    <p class="case-category">Consumer insight and Campaign strategy</p>
-    <h1 class="case-title">Research led the strategy. Strategy shaped the campaigns.</h1>
+    <p class="case-category">Brand positioning and market research</p>
+    <h1 class="case-title">Building a mineral skincare brand from the ground up.</h1>
     <div class="case-meta">
       <div class="meta-item">
         <span class="meta-label">Brand</span>
-        <span class="meta-value">Oskelly</span>
+        <span class="meta-value">Onóre</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Role</span>
-        <span class="meta-value">Assistant Brand Manager</span>
+        <span class="meta-value">Brand Marketing Assistant</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">Year</span>
-        <span class="meta-value">2023 to 2024</span>
+        <span class="meta-label">Market</span>
+        <span class="meta-value">CIS</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Period</span>
+        <span class="meta-value">2022 to 2023</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Type</span>
-        <span class="meta-value">Consumer Research · Content and Campaign Support</span>
+        <span class="meta-value">Brand identity, Research, Social and Influencer</span>
       </div>
     </div>
   </div>
 
   <div class="hero-img-wrap">
-    <img src="oskelly_02.jpg" alt="Oskelly Fake or Real campaign" />
+    <img src="onore_hero.png" alt="Onore mineral science anti-stress" style="object-position: center center;" />
   </div>
 
   <div class="overview">
@@ -161,27 +160,27 @@
       <p class="section-tag">01 Overview</p>
       <div class="stat-grid">
         <div class="stat">
-          <p class="stat-num">500k+</p>
-          <p class="stat-desc">Platform users surveyed</p>
+          <p class="stat-num">4</p>
+          <p class="stat-desc">Style guides developed</p>
         </div>
         <div class="stat">
           <p class="stat-num">3</p>
-          <p class="stat-desc">Influencer campaigns supported</p>
+          <p class="stat-desc">Brand guidelines produced</p>
         </div>
         <div class="stat">
-          <p class="stat-num">2</p>
-          <p class="stat-desc">Analytical reports produced</p>
+          <p class="stat-num">79%</p>
+          <p class="stat-desc">Urban youth experiencing stress in 2022</p>
         </div>
         <div class="stat">
-          <p class="stat-num">3</p>
-          <p class="stat-desc">User personas delivered</p>
+          <p class="stat-num">D2C</p>
+          <p class="stat-desc">Direct to consumer launch</p>
         </div>
       </div>
     </div>
     <div class="overview-right">
       <p class="section-tag">The brief</p>
-      <h2 class="overview-headline">A luxury resale platform with half a million users needed to understand who was buying and why.</h2>
-      <p class="overview-body">Oskelly is a luxury fashion resale platform operating across the UAE and CIS markets. The brand had a large and growing user base but lacked the consumer insight needed to sharpen its messaging and make its campaigns more targeted. My role was to run the research that would feed directly into brand strategy and campaign execution.</p>
+      <h2 class="overview-headline">A new skincare brand needed an identity, a positioning, and a reason to exist in a saturated market.</h2>
+      <p class="overview-body">Onóre is a D2C mineral skincare brand built around the anti-stress properties of magnesium. I joined at the very beginning and worked across the full spectrum of brand building from market research and competitive analysis to brand identity, style guides, content strategy, and influencer collaboration. The challenge was finding a distinctive positioning in a crowded skincare market and making it stick across every touchpoint.</p>
     </div>
   </div>
 
@@ -190,18 +189,18 @@
     <div class="approach-grid">
       <div class="approach-card">
         <p class="approach-num">01</p>
-        <p class="approach-title">Consumer research</p>
-        <p class="approach-body">Designed and launched 3 targeted surveys over 2 months to understand resale motivations, purchase drivers, and platform behaviour across Oskelly's 500k user base.</p>
+        <p class="approach-title">Research and positioning</p>
+        <p class="approach-body">Conducted in-depth market research using surveys, interviews, and competitor analysis. Identified magnesium as a unique differentiator an anti-stress ingredient with strong scientific credibility and high consumer relevance.</p>
       </div>
       <div class="approach-card">
         <p class="approach-num">02</p>
-        <p class="approach-title">Insight and analysis</p>
-        <p class="approach-body">Synthesised findings into 2 analytical reports and 3 detailed user personas mapping who the Oskelly buyer actually was, what motivated them, and what content would resonate.</p>
+        <p class="approach-title">Brand identity</p>
+        <p class="approach-body">Collaborated with the graphic designer to build the brand identity from scratch developing 4 style guides and 3 brand guidelines that defined visual language, tone of voice, and product communication across all channels.</p>
       </div>
       <div class="approach-card">
         <p class="approach-num">03</p>
-        <p class="approach-title">Campaign input</p>
-        <p class="approach-body">Translated research into messaging direction and content calendars that fed into 3 localised influencer campaigns, contributing to measurable engagement uplift across markets.</p>
+        <p class="approach-title">Content and influencer</p>
+        <p class="approach-body">Built and executed the Instagram content strategy, managed an influencer collaboration, and supported the brand's presence at the Green Beauty Expo bringing the brand into the market with a consistent and considered identity.</p>
       </div>
     </div>
   </div>
@@ -210,12 +209,17 @@
     <div class="execution-header">
       <p class="section-tag">03 Execution</p>
     </div>
-    <img class="exec-full" src="oskelly_03.png" alt="Oskelly Instagram Fake or Real campaign post" />
+    <img class="exec-full" src="onore_grid.png" alt="Onore Instagram content grid showing brand visual identity" />
     <div class="exec-grid">
-      <img src="oskelly_01.jpg" alt="Oskelly Prada Fake or Real campaign" />
-      <img src="oskelly_data.png" alt="Oskelly consumer research data" />
+      <img src="onore_influencer.png" alt="Onore influencer collaboration" style="filter: contrast(1.1) saturate(1.1);" />
+      <img src="onore_branding.png" alt="Onore brand identity and packaging" />
     </div>
-    <p class="exec-caption">Fake or Real campaign content developed to drive engagement and test audience knowledge of luxury authentication</p>
+    <p class="exec-caption">Instagram content strategy, influencer collaboration, and brand identity system developed across the launch period</p>
+    <div class="exec-grid">
+      <img src="onore_01.jpg" alt="Onore product photography" />
+      <img src="onore_02.jpg" alt="Onore product on skin" />
+    </div>
+    <p class="exec-caption">Product photography from the brand shoot used across social and D2C channels</p>
   </div>
 
   <div class="results">
@@ -223,35 +227,35 @@
       <h2 class="results-heading">What the work delivered</h2>
       <div class="result-item">
         <div class="result-dot"></div>
-        <p class="result-text">Measurable Instagram engagement growth across 3 localised influencer campaigns</p>
+        <p class="result-text">A complete brand identity built from zero visual language, tone of voice, and product communication consistent across all touchpoints</p>
       </div>
       <div class="result-item">
         <div class="result-dot"></div>
-        <p class="result-text">3 user personas delivered to the marketing team to inform segmentation and targeting</p>
+        <p class="result-text">4 style guides and 3 brand guidelines that gave the team a clear framework to build from</p>
       </div>
       <div class="result-item">
         <div class="result-dot"></div>
-        <p class="result-text">2 analytical reports used to shape brand messaging and content direction across markets</p>
+        <p class="result-text">Brand positioning anchored in a genuine consumer insight 79% of urban youth experiencing stress that made magnesium a compelling and defensible differentiator</p>
       </div>
       <div class="result-item">
         <div class="result-dot"></div>
-        <p class="result-text">Research framework reused across subsequent campaigns as a repeatable insight process</p>
+        <p class="result-text">Successful launch at the Green Beauty Expo, influencer activation, and a live D2C brand in the CIS market</p>
       </div>
     </div>
     <div class="results-right">
       <p class="takeaway-label">04 Key takeaway</p>
-      <p class="takeaway-text">The most valuable contribution wasn't the campaigns themselves it was building the understanding that made them sharper. Research doesn't slow execution down. Done right, it speeds it up and makes every decision easier to defend.</p>
+      <p class="takeaway-text">The best brand positioning isn't invented it's found. Onóre's "MINERAL. SCIENCE. ANTI-STRESS." direction came directly from what the research told us about how people were actually feeling. Starting with insight meant every creative decision had a reason behind it.</p>
     </div>
   </div>
 
   <div class="case-nav">
-    <a href="index.html#work" class="case-nav-item">
-      <p class="nav-dir">← Back</p>
-      <p class="nav-case-name">All work</p>
+    <a href="oskelly.html" class="case-nav-item">
+      <p class="nav-dir">Previous</p>
+      <p class="nav-case-name">Oskelly luxury resale platform</p>
     </a>
-    <a href="onore.html" class="case-nav-item" style="text-align: right;">
-      <p class="nav-dir">Next →</p>
-      <p class="nav-case-name">Onóre D2C skincare brand</p>
+    <a href="index.html#work" class="case-nav-item" style="text-align: right;">
+      <p class="nav-dir">All work</p>
+      <p class="nav-case-name">Back to portfolio</p>
     </a>
   </div>
 
