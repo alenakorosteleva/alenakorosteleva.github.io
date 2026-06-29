@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oskelly — Alena Korosteleva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --mauve: #2D1F3D;
+      --mauve-light: #3d2a54;
+      --mauve-pale: #ece8f4;
+      --off-white: #F8F7F5;
+      --text: #1a1a1a;
+      --text-mid: #555550;
+      --text-light: #999994;
+      --border: #e4e3e0;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--off-white); position: sticky; top: 0; z-index: 100; }
+    .nav-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+    .nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--text); }
+
+    /* CASE HERO */
+    .case-hero { background: var(--mauve); padding: 3.5rem 2.5rem 3rem; position: relative; overflow: hidden; }
+    .case-hero::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); top: -200px; right: -100px; pointer-events: none; }
+    .case-back { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 6px; }
+    .case-category { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-family: 'Syne', sans-serif; font-weight: 600; }
+    .case-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 3.5vw, 48px); font-weight: 700; color: white; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 2rem; max-width: 700px; }
+    .case-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 5px; }
+    .meta-label { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); font-family: 'Syne', sans-serif; font-weight: 600; }
+    .meta-value { font-size: 12px; color: rgba(255,255,255,0.65); }
+
+    /* HERO IMAGE */
+    .hero-img-wrap { border-bottom: 1px solid var(--border); overflow: hidden; max-height: 520px; }
+    .hero-img-wrap img { width: 100%; display: block; object-fit: cover; object-position: center; }
+
+    /* SECTION SHARED */
+    .section-tag { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.5rem; }
+
+    /* OVERVIEW */
+    .overview { display: grid; grid-template-columns: 300px 1fr; border-bottom: 1px solid var(--border); }
+    .overview-left { padding: 2.5rem 2rem; border-right: 1px solid var(--border); }
+    .overview-right { padding: 2.5rem 2.5rem; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 1.5rem; }
+    .stat { background: var(--off-white); padding: 1.25rem 1rem; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: var(--mauve); line-height: 1; margin-bottom: 5px; }
+    .stat-desc { font-size: 10px; color: var(--text-light); letter-spacing: 0.06em; line-height: 1.4; }
+    .overview-headline { font-family: 'Syne', sans-serif; font-size: clamp(18px, 2vw, 26px); font-weight: 700; color: var(--text); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 1.25rem; }
+    .overview-body { font-size: 14px; color: var(--text-mid); line-height: 1.85; }
+
+    /* APPROACH */
+    .approach { border-bottom: 1px solid var(--border); padding: 2.5rem 2.5rem; }
+    .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 1.5rem; }
+    .approach-card { background: var(--off-white); padding: 1.75rem 1.5rem; }
+    .approach-num { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 0.75rem; opacity: 0.5; }
+    .approach-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 0.75rem; }
+    .approach-body { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+
+    /* EXECUTION */
+    .execution { border-bottom: 1px solid var(--border); }
+    .execution-header { padding: 2rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border); }
+    .exec-full { width: 100%; display: block; object-fit: cover; border-bottom: 1px solid var(--border); max-height: 500px; }
+    .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+    .exec-grid img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; }
+    .exec-caption { padding: 1rem 2.5rem; font-size: 12px; color: var(--text-light); font-style: italic; border-bottom: 1px solid var(--border); }
+
+    /* RESULTS */
+    .results { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .results-left { background: var(--mauve); padding: 3rem 2.5rem; }
+    .results-heading { font-family: 'Syne', sans-serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; color: white; line-height: 1.2; margin-bottom: 2rem; }
+    .result-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.25rem; }
+    .result-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.3); margin-top: 6px; flex-shrink: 0; }
+    .result-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+    .results-right { padding: 3rem 2.5rem; border-left: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; }
+    .takeaway-label { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1rem; }
+    .takeaway-text { font-size: 14px; color: var(--text-mid); line-height: 1.85; font-style: italic; }
+
+    /* CASE NAV */
+    .case-nav { display: grid; grid-template-columns: 1fr 1fr; }
+    .case-nav-item { padding: 1.75rem 2.5rem; cursor: pointer; transition: background 0.15s; text-decoration: none; display: block; }
+    .case-nav-item:hover { background: #f3f1f7; }
+    .case-nav-item:first-child { border-right: 1px solid var(--border); }
+    .nav-dir { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.5rem; }
+    .nav-case-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .case-hero { padding: 2.5rem 1.5rem 2rem; }
+      .case-meta { gap: 1.5rem; }
+      .overview { grid-template-columns: 1fr; }
+      .overview-left { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+      .overview-right { padding: 2rem 1.5rem; }
+      .approach { padding: 2rem 1.5rem; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .execution-header { padding: 1.5rem 1.5rem 1rem; }
+      .exec-caption { padding: 1rem 1.5rem; }
+      .exec-grid { grid-template-columns: 1fr; }
+      .results { grid-template-columns: 1fr; }
+      .results-right { border-left: none; border-top: 1px solid var(--border); padding: 2rem 1.5rem; }
+      .results-left { padding: 2rem 1.5rem; }
+      .case-nav-item { padding: 1.25rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Alena Korosteleva</a>
+    <a href="index.html#work" class="nav-back">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M10 6H2M2 6L5 3M2 6L5 9" stroke="#555550" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      All work
+    </a>
+  </nav>
+
+  <div class="case-hero">
+    <p class="case-back">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8 5H2M2 5L4.5 2.5M2 5L4.5 7.5" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Case study
+    </p>
+    <p class="case-category">Consumer insight · Campaign strategy</p>
+    <h1 class="case-title">Research led the strategy. Strategy shaped the campaigns.</h1>
+    <div class="case-meta">
+      <div class="meta-item">
+        <span class="meta-label">Brand</span>
+        <span class="meta-value">Oskelly</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">Assistant Brand Manager</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Year</span>
+        <span class="meta-value">2023 – 2024</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Type</span>
+        <span class="meta-value">Consumer Research · Content · Campaign Support</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-img-wrap">
+    <img src="oskelly_01.jpg" alt="Oskelly Fake or Real campaign — Prada shoes" />
+  </div>
+
+  <div class="overview">
+    <div class="overview-left">
+      <p class="section-tag">01 — Overview</p>
+      <div class="stat-grid">
+        <div class="stat">
+          <p class="stat-num">500k+</p>
+          <p class="stat-desc">Platform users surveyed</p>
+        </div>
+        <div class="stat">
+          <p class="stat-num">3</p>
+          <p class="stat-desc">Influencer campaigns supported</p>
+        </div>
+        <div class="stat">
+          <p class="stat-num">2</p>
+          <p class="stat-desc">Analytical reports produced</p>
+        </div>
+        <div class="stat">
+          <p class="stat-num">3</p>
+          <p class="stat-desc">User personas delivered</p>
+        </div>
+      </div>
+    </div>
+    <div class="overview-right">
+      <p class="section-tag">The brief</p>
+      <h2 class="overview-headline">A luxury resale platform with half a million users needed to understand who was buying — and why.</h2>
+      <p class="overview-body">Oskelly is a luxury fashion resale platform operating across the UAE and CIS markets. The brand had a large and growing user base but lacked the consumer insight needed to sharpen its messaging and make its campaigns more targeted. My role was to run the research that would feed directly into brand strategy and campaign execution.</p>
+    </div>
+  </div>
+
+  <div class="approach">
+    <p class="section-tag">02 — Approach</p>
+    <div class="approach-grid">
+      <div class="approach-card">
+        <p class="approach-num">01</p>
+        <p class="approach-title">Consumer research</p>
+        <p class="approach-body">Designed and launched 3 targeted surveys over 2 months to understand resale motivations, purchase drivers, and platform behaviour across Oskelly's 500k user base.</p>
+      </div>
+      <div class="approach-card">
+        <p class="approach-num">02</p>
+        <p class="approach-title">Insight and analysis</p>
+        <p class="approach-body">Synthesised findings into 2 analytical reports and 3 detailed user personas — mapping who the Oskelly buyer actually was, what motivated them, and what content would resonate.</p>
+      </div>
+      <div class="approach-card">
+        <p class="approach-num">03</p>
+        <p class="approach-title">Campaign input</p>
+        <p class="approach-body">Translated research into messaging direction and content calendars that fed into 3 localised influencer campaigns, contributing to measurable engagement uplift across markets.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="execution">
+    <div class="execution-header">
+      <p class="section-tag">03 — Execution</p>
+    </div>
+    <img class="exec-full" src="oskelly_02.jpg" alt="Oskelly — Saint Laurent Fake or Real campaign thumbnail" />
+    <div class="exec-grid">
+      <img src="oskelly_03.png" alt="Oskelly — Instagram Fake or Real campaign post" />
+      <img src="oskelly_research.png" alt="Oskelly — consumer demographics research report" />
+    </div>
+    <p class="exec-caption">Fake or Real campaign — content developed to drive engagement and test audience knowledge of luxury authentication</p>
+  </div>
+
+  <div class="results">
+    <div class="results-left">
+      <h2 class="results-heading">What the work delivered</h2>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p class="result-text">Measurable Instagram engagement growth across 3 localised influencer campaigns</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p class="result-text">3 user personas delivered to the marketing team to inform segmentation and targeting</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p class="result-text">2 analytical reports used to shape brand messaging and content direction across markets</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p class="result-text">Research framework reused across subsequent campaigns as a repeatable insight process</p>
+      </div>
+    </div>
+    <div class="results-right">
+      <p class="takeaway-label">04 — Key takeaway</p>
+      <p class="takeaway-text">The most valuable contribution wasn't the campaigns themselves — it was building the understanding that made them sharper. Research doesn't slow execution down. Done right, it speeds it up and makes every decision easier to defend.</p>
+    </div>
+  </div>
+
+  <div class="case-nav">
+    <a href="index.html#work" class="case-nav-item">
+      <p class="nav-dir">← Back</p>
+      <p class="nav-case-name">All work</p>
+    </a>
+    <a href="onore.html" class="case-nav-item" style="text-align: right;">
+      <p class="nav-dir">Next →</p>
+      <p class="nav-case-name">Onóre — D2C skincare brand</p>
+    </a>
+  </div>
+
+</body>
+</html>
