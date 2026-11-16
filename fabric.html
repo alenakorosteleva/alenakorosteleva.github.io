@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Fabric Connector Alena Korosteleva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --mauve: #2D1F3D;
+      --mauve-light: #3d2a54;
+      --mauve-pale: #ece8f4;
+      --off-white: #F8F7F5;
+      --text: #1a1a1a;
+      --text-mid: #555550;
+      --text-light: #999994;
+      --border: #e4e3e0;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--off-white); position: sticky; top: 0; z-index: 100; }
+    .nav-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+    .nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--text); }
+
+    /* CASE HERO */
+    .case-hero { background: var(--mauve); padding: 3.5rem 2.5rem 3rem; position: relative; overflow: hidden; }
+    .case-hero::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); top: -200px; right: -100px; pointer-events: none; }
+    .case-back { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 6px; }
+    .case-category { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; font-family: 'Syne', sans-serif; font-weight: 600; }
+    .case-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 3.5vw, 48px); font-weight: 700; color: white; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 2rem; max-width: 700px; }
+    .case-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 5px; }
+    .meta-label { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); font-family: 'Syne', sans-serif; font-weight: 600; }
+    .meta-value { font-size: 12px; color: rgba(255,255,255,0.65); }
+
+    /* HERO IMAGE */
+    .hero-img-wrap { border-bottom: 1px solid var(--border); background: var(--mauve-pale); display: flex; justify-content: center; }
+    .hero-img-wrap img { width: 100%; display: block; object-fit: contain; max-height: 600px; }
+
+    /* SECTION SHARED */
+    .section-tag { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.5rem; }
+
+    /* OVERVIEW */
+    .overview { display: grid; grid-template-columns: 300px 1fr; border-bottom: 1px solid var(--border); }
+    .overview-left { padding: 2.5rem 2rem; border-right: 1px solid var(--border); }
+    .overview-right { padding: 2.5rem 2.5rem; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 1.5rem; }
+    .stat { background: var(--off-white); padding: 1.25rem 1rem; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: var(--mauve); line-height: 1; margin-bottom: 5px; }
+    .stat-desc { font-size: 10px; color: var(--text-light); letter-spacing: 0.06em; line-height: 1.4; }
+    .overview-headline { font-family: 'Syne', sans-serif; font-size: clamp(18px, 2vw, 26px); font-weight: 700; color: var(--text); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 1.25rem; }
+    .overview-body { font-size: 14px; color: var(--text-mid); line-height: 1.85; }
+
+    /* APPROACH */
+    .approach { border-bottom: 1px solid var(--border); padding: 2.5rem 2.5rem; }
+    .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 1.5rem; }
+    .approach-card { background: var(--off-white); padding: 1.75rem 1.5rem; }
+    .approach-num { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 0.75rem; opacity: 0.5; }
+    .approach-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 0.75rem; }
+    .approach-body { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+
+    /* EXECUTION */
+    .execution { border-bottom: 1px solid var(--border); }
+    .execution-header { padding: 2rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border); }
+    .exec-full { width: 100%; display: block; object-fit: contain; background: var(--off-white); }
+    .exec-block { border-bottom: 1px solid var(--border); }
+    .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); align-items: stretch; }
+    .exec-grid-item { background: var(--off-white); display: flex; flex-direction: column; }
+    .exec-grid-item-img-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 1.25rem; min-height: 280px; }
+    .exec-grid-item img { width: 100%; max-height: 420px; display: block; object-fit: contain; }
+    .exec-caption { padding: 0.9rem 1.5rem; font-size: 12px; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); }
+    .exec-caption-full { padding: 1rem 2.5rem; font-size: 12px; color: var(--text-light); font-style: italic; border-bottom: 1px solid var(--border); }
+
+    /* RESULTS */
+    .results { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .results-left { background: var(--mauve); padding: 3rem 2.5rem; }
+    .results-heading { font-family: 'Syne', sans-serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; color: white; line-height: 1.2; margin-bottom: 2rem; }
+    .result-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.25rem; }
+    .result-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.3); margin-top: 6px; flex-shrink: 0; }
+    .result-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+    .results-right { padding: 3rem 2.5rem; border-left: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; }
+    .takeaway-label { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1rem; }
+    .takeaway-text { font-size: 14px; color: var(--text-mid); line-height: 1.85; font-style: italic; }
+
+    /* SOCIAL LINK */
+    .social-link { padding: 1.75rem 2.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: center; }
+    .social-link-item { display: inline-flex; align-items: center; gap: 8px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mauve); text-decoration: none; padding: 10px 22px; border: 1px solid var(--mauve); border-radius: 2px; transition: background 0.2s, color 0.2s; }
+    .social-link-item:hover { background: var(--mauve); color: white; }
+
+    /* CASE NAV */
+    .case-nav { display: grid; grid-template-columns: 1fr 1fr; }
+    .case-nav-item { padding: 1.75rem 2.5rem; cursor: pointer; transition: background 0.15s; text-decoration: none; display: block; }
+    .case-nav-item:hover { background: #f3f1f7; }
+    .case-nav-item:first-child { border-right: 1px solid var(--border); }
+    .nav-dir { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.5rem; }
+    .nav-case-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .case-hero { padding: 2.5rem 1.5rem 2rem; }
+      .case-meta { gap: 1.5rem; }
+      .overview { grid-template-columns: 1fr; }
+      .overview-left { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+      .overview-right { padding: 2rem 1.5rem; }
+      .approach { padding: 2rem 1.5rem; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .execution-header { padding: 1.5rem 1.5rem 1rem; }
+      .exec-caption { padding: 1rem 1.5rem; }
+      .exec-grid { grid-template-columns: 1fr; }
+      .results { grid-template-columns: 1fr; }
+      .results-right { border-left: none; border-top: 1px solid var(--border); padding: 2rem 1.5rem; }
+      .results-left { padding: 2rem 1.5rem; }
+      .case-nav-item { padding: 1.25rem 1.5rem; }
+    }
+    /* FABRIC CONNECTOR ADDITIONS */
+    .ph-wrap { position: relative; }
+    .ph { background: var(--mauve-pale); display: flex; align-items: center; justify-content: center; min-height: 260px; width: 100%; }
+    .ph::after { content: attr(data-label); font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mauve); opacity: 0.6; text-align: center; padding: 1.5rem; line-height: 1.6; white-space: pre-line; }
+    .hero-img-wrap.ph { min-height: 420px; }
+    .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+    .ig-cell { background: var(--off-white); aspect-ratio: 4 / 5; overflow: hidden; }
+    .ig-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ig-cell.ph { min-height: 0; background: var(--mauve-pale); }
+    .ig-wrap { padding: 2rem 2.5rem; border-bottom: 1px solid var(--border); }
+    .ig-wrap .ig-grid { max-width: 900px; margin: 0 auto; border: 1px solid var(--border); }
+    .exec-subhead { padding: 1.5rem 2.5rem 1.25rem; border-bottom: 1px solid var(--border); }
+    .exec-subtitle { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .exec-subbody { font-size: 13px; color: var(--text-mid); line-height: 1.75; max-width: 720px; }
+    .role-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 1.5rem; }
+    .role-list li { background: var(--off-white); padding: 1.1rem 1.25rem; font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+    .role { border-bottom: 1px solid var(--border); padding: 2.5rem; }
+    .stat-note { font-size: 10px; color: var(--text-light); margin-top: 0.9rem; line-height: 1.5; }
+    .overview-body + .overview-body { margin-top: 1rem; }
+    .result-text strong { color: white; font-weight: 500; }
+    @media (max-width: 768px) { .role { padding: 2rem 1.5rem; } .role-list { grid-template-columns: 1fr; } }
+    .role-box { margin-top: 1.75rem; border: 1px solid var(--border); background: var(--white); }
+    .role-box-head { padding: 0.8rem 1.25rem; border-bottom: 1px solid var(--border); font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mauve); }
+    .role-items { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .role-item { padding: 1rem 1.25rem; font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+    .role-item + .role-item { border-left: 1px solid var(--border); }
+    .role-item strong { display: block; font-family: 'Syne', sans-serif; font-size: 13px; color: var(--text); margin-bottom: 0.25rem; }
+    .stat-grid.dark { background: rgba(255,255,255,0.12); margin-top: 0; }
+    .stat-grid.dark .stat { background: var(--mauve); }
+    .stat-grid.dark .stat-num { color: white; }
+    .stat-grid.dark .stat-desc { color: rgba(255,255,255,0.55); }
+    .stat-note.dark { color: rgba(255,255,255,0.4); }
+    @media (max-width: 768px) { .role-items { grid-template-columns: 1fr; } .role-item + .role-item { border-left: none; border-top: 1px solid var(--border); } }
+    /* Highlights text still to confirm. Remove the class (or this rule) when final. */
+    .todo { background: #fff4c2; padding: 0 3px; border-radius: 2px; }
+    @media (max-width: 768px) {
+      .ig-wrap { padding: 1rem; }
+      .exec-subhead { padding: 1.25rem 1.5rem 1rem; }
+      .ig-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Alena Korosteleva</a>
+    <a href="index.html#work" class="nav-back">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10 6H2M2 6L5 3M2 6L5 9" stroke="#555550" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All work
+    </a>
+  </nav>
+
+  <div class="case-hero">
+    <p class="case-back"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M8 5H2M2 5L4.5 2.5M2 5L4.5 7.5" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Case study</p>
+    <p class="case-category">Positioning · Content · Brand partnerships</p>
+    <h1 class="case-title">Turning a B2B fabric library into the source designers trust</h1>
+    <div class="case-meta">
+      <div class="meta-item"><span class="meta-label">Brand</span><span class="meta-value">The Fabric Connector</span></div>
+      <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Brand Manager</span></div>
+      <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2026</span></div>
+      <div class="meta-item"><span class="meta-label">Type</span><span class="meta-value">Positioning · Organic Content Strategy · Partnerships and Outreach</span></div>
+    </div>
+  </div>
+
+  <div class="overview">
+    <div class="overview-left">
+      <p class="section-tag">01 Overview</p>
+      <div class="stat-grid">
+        <div class="stat"><p class="stat-num">€0</p><p class="stat-desc">Ad budget, organic only</p></div>
+        <div class="stat"><p class="stat-num">3</p><p class="stat-desc">Audience personas defined</p></div>
+        <div class="stat"><p class="stat-num">2</p><p class="stat-desc">Content pillars: Fabric IQ and EQ</p></div>
+        <div class="stat"><p class="stat-num">2&times;</p><p class="stat-desc">Posts a week, planned in Notion</p></div>
+      </div>
+    </div>
+    <div class="overview-right">
+      <p class="section-tag">The challenge</p>
+      <h2 class="overview-headline">A sustainable fabric startup was talking to the wrong audience, with no ad budget to fix it.</h2>
+      <p class="overview-body">The Fabric Connector is an Amsterdam-based fabric library for design-led fashion brands. It launched in late 2025 around deadstock, but its reach came mostly from sustainability experts rather than the brands it sells to, and soon dropped by over 90%. Together with the founder, we repositioned it as a curated, premium library of natural fibres, next-gen materials and deadstock. My job was to bring that to life organically and rebuild the audience around the right people.</p>
+      <div class="role-box">
+        <p class="role-box-head">My role &middot; Brand Manager</p>
+        <div class="role-items">
+          <div class="role-item"><strong>Strategy</strong>Communication strategy, key messages and tone of voice</div>
+          <div class="role-item"><strong>Content</strong>Instagram strategy, content creation and website copy</div>
+          <div class="role-item"><strong>Partnerships</strong>Brand outreach, onboarding and collaborations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="approach">
+    <p class="section-tag">02 Approach</p>
+    <div class="approach-grid">
+      <div class="approach-card">
+        <p class="approach-num">01</p>
+        <p class="approach-title">Know exactly who you're talking to</p>
+        <p class="approach-body">Defined two primary audiences who behave the same way on Instagram: founders and creative directors, and designers and product developers at independent and mid-sized European brands, with sourcing managers as a secondary audience. All three are allergic to greenwashing and vague claims, so radical transparency became the thread through every message.</p>
+      </div>
+      <div class="approach-card">
+        <p class="approach-num">02</p>
+        <p class="approach-title">Fabric IQ and Fabric EQ</p>
+        <p class="approach-body">Competitors with 50K+ followers showed their fabrics but rarely explained them. Fabric IQ makes the follower smarter in under a minute: deep-dives, buying checklists, regulation explainers. Fabric EQ shows the fabric in the world, on a body and next to its swatch. Lead with a fact, not a mood. Two posts a week, planned in Notion.</p>
+      </div>
+      <div class="approach-card">
+        <p class="approach-num">03</p>
+        <p class="approach-title">Borrow the right audiences</p>
+        <p class="approach-body">Growing organically from an audience of sustainability experts meant reaching brands through other people's audiences. I initiated brand collaborations, putting TFC's materials in front of design-led brands, and ran direct outreach from first contact to onboarding.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="execution">
+    <div class="execution-header"><p class="section-tag">03 Execution</p></div>
+
+    <div class="opt-section">
+    <div class="exec-subhead">
+      <p class="exec-subtitle">From one category to three pillars</p>
+      <p class="exec-subbody">Before, deadstock was the whole story. After, it became one part of a curated library of natural fibres, next-gen materials and deadstock.</p>
+    </div>
+    <div class="exec-block"><div class="exec-grid">
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap ph-wrap" data-label="Before&#10;tfc_before.jpg&#10;Culture.Fashion listing"><img src="tfc_before.jpg" alt="Earlier deadstock-only positioning" onerror="var s=this.closest('.opt-section');if(s)s.style.display='none';" /></div><p class="exec-caption">Before: deadstock as the whole story</p></div>
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap ph-wrap" data-label="After&#10;tfc_after.jpg&#10;fabric-connector.com hero"><img src="tfc_after.jpg" alt="New website homepage" onerror="var s=this.closest('.opt-section');if(s)s.style.display='none';" /></div><p class="exec-caption">After: &quot;The right fabric is a brand statement&quot;</p></div>
+    </div></div>
+    </div>
+
+    <div class="opt-section">
+    <div class="exec-subhead">
+      <p class="exec-subtitle">One content system, two pillars</p>
+      <p class="exec-subbody">Fabric IQ explains what a material does. Fabric EQ shows how it feels. Same visual language, so a designer scrolling the feed sees a sourcing expert, not a deadstock shop.</p>
+    </div>
+    <div class="exec-block"><div class="exec-grid">
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap"><img src="tfc_iq.jpg" alt="Tencel Lyocell post: soft and smooth, moisture-regulating, durable" onerror="var s=this.closest('.opt-section');if(s)s.style.display='none';" /></div><p class="exec-caption">Fabric IQ: what the material does</p></div>
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap"><img src="tfc_eq.jpg" alt="Plant-based fur post: structured, soft, insulating" onerror="var s=this.closest('.opt-section');if(s)s.style.display='none';" /></div><p class="exec-caption">Fabric EQ: how the material feels</p></div>
+    </div></div>
+    </div>
+
+    <div class="exec-subhead">
+      <p class="exec-subtitle">A brand collaboration</p>
+      <p class="exec-subbody">Fabric EQ in practice: a finished garment next to the deadstock fabric behind it, with the specs a designer needs right on the swatch.</p>
+    </div>
+    <div class="exec-block"><div class="exec-grid">
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap"><img src="tfc_collab_01.png" alt="Brand collaboration garment made with a deadstock pinstripe" /></div><p class="exec-caption">The garment: deadstock pinstripe, styled</p></div>
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap"><img src="tfc_collab_02.png" alt="Deadstock pinstripe swatch: 50% linen, 35% wool, 15% cotton" /></div><p class="exec-caption">The fabric: 50% linen, 35% wool, 15% cotton</p></div>
+    </div></div>
+    <div class="opt-section">
+    <div class="exec-subhead">
+      <p class="exec-subtitle">A supplier launch concept</p>
+      <p class="exec-subbody">An unpublished carousel for a supplier's bioactive knit: from material science to a benefit a designer can pitch internally.</p>
+    </div>
+    <div class="exec-block"><div class="exec-grid">
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap"><img src="tfc_skin_01.jpg" alt="Supplier launch concept: bioactive knit on a model" onerror="var s=this.closest('.opt-section');if(s)s.style.display='none';" /></div><p class="exec-caption">Concept: the knit on the body</p></div>
+      <div class="exec-grid-item"><div class="exec-grid-item-img-wrap"><img src="tfc_skin_02.jpg" alt="Supplier launch concept: bioactive knits built for next-to-skin apparel" onerror="var s=this.closest('.opt-section');if(s)s.style.display='none';" /></div><p class="exec-caption">Concept: the benefits, in plain words</p></div>
+    </div></div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="results-left">
+      <h2 class="results-heading">Results</h2>
+      <div class="stat-grid dark">
+        <div class="stat"><p class="stat-num">+178%</p><p class="stat-desc">Instagram reach</p></div>
+        <div class="stat"><p class="stat-num">+74%</p><p class="stat-desc">Content interactions</p></div>
+        <div class="stat"><p class="stat-num">3+</p><p class="stat-desc">New brand clients onboarded</p></div>
+        <div class="stat"><p class="stat-num">3+</p><p class="stat-desc">Industry collaborators brought in</p></div>
+      </div>
+      <p class="stat-note dark">Instagram figures: Jun–Aug 2026 vs the previous three months, Meta Insights. 100% organic.</p>
+    </div>
+    <div class="results-right">
+      <p class="takeaway-label">04 Key takeaway</p>
+      <p class="takeaway-text">Repositioning a brand on paper takes a few weeks. Repositioning it in people's feeds takes months: the website changes overnight, but the audience has to be earned post by post. With no budget, the levers were consistency, real expertise and the right partners, and together they turned a fading account into a growing one.</p>
+    </div>
+  </div>
+
+  <div class="social-link">
+    <a href="https://www.instagram.com/thefabricconnector/" target="_blank" class="social-link-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      View on Instagram
+    </a>
+  </div>
+
+  <div class="case-nav">
+    <a href="index.html#work" class="case-nav-item"><p class="nav-dir">Back</p><p class="nav-case-name">All work</p></a>
+    <a href="oskelly.html" class="case-nav-item" style="text-align: right;"><p class="nav-dir">Next</p><p class="nav-case-name">Oskelly luxury resale platform</p></a>
+  </div>
+
+</body>
+</html>
